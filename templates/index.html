@@ -106,7 +106,23 @@
                     </div>
                     {% endfor %}
                 </div>
-                
+                <!-- Export Buttons -->
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Export Options</h3>
+                    <div class="flex space-x-4">
+                        <a  href="/export/csv"
+                            class="flex-1 text-center bg-gradient-to-r from-green-500 to-green-600  hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105"
+                        >
+                            Download CSV
+                        </a>
+                            <a  href="/export/json"
+                            class="flex-1 text-center bg-gradient-to-r from-yellow-500 to-yellow-600  hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105"
+                        >
+                            Download JSON
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Results Footer -->
                 <div class="mt-6 pt-4 border-t border-gray-200">
                     <p class="text-sm text-gray-500 text-center">
