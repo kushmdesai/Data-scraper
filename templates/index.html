@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scraper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Data Scraper</h1>
+            <p class="text-gray-600">Extract data from any website with ease</p>
+        </div>
+
+        <!-- Main Form Card -->
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <form method="POST" class="space-y-6">
+                    <!-- URL Input -->
+                    <div>
+                        <label for="url" class="block text-sm font-medium text-gray-700 mb-2">
+                            Website URL
+                        </label>
+                        <input 
+                            type="url" 
+                            id="url"
+                            name="url" 
+                            required
+                            placeholder="https://example.com"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                    </div>
+
+                    <!-- Data Type Selection -->
+                    <div>
+                        <label for="data_type" class="block text-sm font-medium text-gray-700 mb-2">
+                            Data Type
+                        </label>
+                        <select 
+                            id="data_type"
+                            name="data_type"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                            <option value="text">Text Content</option>
+                            <option value="links">Links</option>
+                            <option value="images">Images</option>
+                            <option value="table">Table Data</option>
+                        </select>
+                    </div>
+
+                    <!-- CSS Selector -->
+                    <div>
+                        <label for="css_selector" class="block text-sm font-medium text-gray-700 mb-2">
+                            CSS Selector 
+                            <span class="text-gray-500 text-xs">(optional)</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="css_selector"
+                            name="css_selector"
+                            placeholder="e.g., .content, #main, h2"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                        <p class="text-xs text-gray-500 mt-1">Specify a CSS selector to target specific elements</p>
+                    </div>
+
+                    <!-- Scrape Name -->
+                    <div>
+                        <label for="scrape_name" class="block text-sm font-medium text-gray-700 mb-2">
+                            Scrape Name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="scrape_name"
+                            name="scrape_name" 
+                            required
+                            placeholder="My Website Scrape"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        Start Scraping
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            {% if results %}
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <h2 class="text-2xl font-bold text-gray-800">First 10 Results</h2>
+                </div>
+                
+                <div class="space-y-3">
+                    {% for item in results %}
+                    <div class="bg-gray-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                        <p class="text-gray-700 break-words">{{ item }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Results Footer -->
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <p class="text-sm text-gray-500 text-center">
+                        Showing first 10 results. Total items may vary.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-12">
+            <p class="text-gray-500 text-sm">
+                Built with Flask & Tailwind CSS
+            </p>
+        </div>
+    </div>
+</body>
+</html>
