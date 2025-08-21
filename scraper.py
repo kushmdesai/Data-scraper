@@ -1,9 +1,13 @@
 from scrapingbee import ScrapingBeeClient
 from bs4 import BeautifulSoup
 from datetime import datetime
-import sqlite3
+import sqlite3, os
+from dotenv import load_dotenv
 
-client = ScrapingBeeClient(api_key="QU2QUS7AYLUXH9FJ5F6RK7TF2BS7Y14B1L3AP1IGR0KNCA56YCGE6V33MSA3EZ0U3NAZDUNBSELPRT1N")
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+client = ScrapingBeeClient(api_key=API_KEY)
 DB_FILE = "database.db"
 
 def scrape_and_store(url, data_type, selector, scrape_name):
