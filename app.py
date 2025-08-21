@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, session, jsonify, send_file, Response
+from flask import Flask, render_template, request, session, jsonify, Response
 from scraper import scrape_and_store
-import csv, io, json
-from openpyxl import Workbook
+import csv, io
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
